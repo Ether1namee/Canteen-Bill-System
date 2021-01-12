@@ -404,7 +404,7 @@ int main()
                 continue;
             if(re != 'y' || re != 'n')
                 cout<<"Enter a valid choice.";
-                goto ordermore;
+                goto ordermoreagain;
             
         }
 
