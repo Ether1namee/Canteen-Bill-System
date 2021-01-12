@@ -363,7 +363,7 @@ int main()
         b.takeOrder();
         cout<<endl;
         cout<<endl;
-        cout<<"Do you want ot order more(y/n/c/d)?"<<endl;
+        cout<<"Do you want to order more(y/n/c/d)?"<<endl;
         jump : cin>>choice1;
         if(choice1 == 'y' || choice1 == 'n')
         {
