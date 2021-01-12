@@ -392,19 +392,20 @@ int main()
             if(choice2 == 'y')
                 goto more;
             if(choice2 == 'n')
-                goto ordermore;
+                goto ordermoreagain;
             if(choice2 != 'y' || choice2 != 'n')
                 cout<<"INVALID CHOICE"<<endl<<"Re-enter:";
                 goto remore;
-            ordermore : cout<<"Do you want to order more(y/n)?";
+            ordermoreagain : cout<<"Do you want to order more(y/n)?";
             rechoice : cin>>re;
+            if(re == 'n')
+                break;
             if(re == 'y')
                 continue;
             if(re != 'y' || re != 'n')
-                cout<<"Enter a valid choice:";
-                goto rechoice;
-            if(choice1 == 'n')
-                goto calc;
+                cout<<"Enter a valid choice.";
+                goto ordermore;
+            
         }
 
         else{
