@@ -129,6 +129,7 @@ void canteen::decrease()
 void canteen::displayMenu()
 {
     cout<<endl;
+    cout<<"welcome to nmit canteen"<<endl;
     cout<<"*******MENU*******"<<endl;
     cout<<"_____________________"<<endl;
     cout<<"|FOOD        | RATES |"<<endl;
@@ -417,7 +418,7 @@ int main()
     calc : b.calculateBill();
     char a;
     try{
-    cout<<"Do you want a soft copy of your bill(y/n)?";
+    cout<<"Do you want reciept (y/n)?";
     cin>>a;
     if(a == 'y' || a == 'n')
     {
