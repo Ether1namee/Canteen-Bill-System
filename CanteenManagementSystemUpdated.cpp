@@ -129,7 +129,6 @@ void canteen::decrease()
 void canteen::displayMenu()
 {
     cout<<endl;
-    cout<<"welcome to nmit canteen"<<endl;
     cout<<"*******MENU*******"<<endl;
     cout<<"_____________________"<<endl;
     cout<<"|FOOD        | RATES |"<<endl;
@@ -287,8 +286,13 @@ void billing::showBillInFile()
 {
     time_t now = time(0);
     char* dt = ctime(&now);
-    ofstream to("billFile.txt");
-    to << "Customer Name : "<<name<<endl;
+    try{
+        ofstream to("billFile.txt");
+        if(!to)
+        {
+            throw('e');
+        }
+        to << "Customer Name : "<<name<<endl;
     to << "Local date and time : "<<dt<<endl;
     to << endl<<endl;
     to<<"************TOTAL AMOUNT*************"<<endl;
@@ -349,6 +353,13 @@ void billing::showBillInFile()
             to<<"Your order's total amount is : "<<"RS."<<total<<endl<<endl;
     }
     to.close();
+    }
+    catch(char a)
+    {
+        cout<<"ERROR";
+        exit(0);
+    }
+
 }
 int main()
 {
@@ -356,6 +367,7 @@ int main()
     billing b;
     bool choice = true;
     char choice1,re,choice2;
+    cout<<"******WELCOME TO CANTEEN BILLING SYSYTEM******"<<endl;
     cout<<"Enter your name:";
     cin>>b.name;
     while(choice != false)
@@ -364,7 +376,7 @@ int main()
         b.takeOrder();
         cout<<endl;
         cout<<endl;
-        cout<<"Do you want to order more(y/n/c/d)?"<<endl;
+        cout<<"Do you want ot order more(y/n/c/d)?"<<endl;
         jump : cin>>choice1;
         if(choice1 == 'y' || choice1 == 'n')
         {
@@ -388,25 +400,25 @@ int main()
             b.decrease();
             cout<<endl<<"UPDATED BILL"<<endl;
             b.showBillInTerminal();
-            cout<<"Do you want to decrease more?";
-            remore : cin>>choice2;
+            remoreabc :cout<<"Do you want to decrease more?";
+             cin>>choice2;
             if(choice2 == 'y')
                 goto more;
             if(choice2 == 'n')
                 goto ordermoreagain;
             if(choice2 != 'y' || choice2 != 'n')
                 cout<<"INVALID CHOICE"<<endl<<"Re-enter:";
-                goto remore;
+                goto remoreabc;
             ordermoreagain : cout<<"Do you want to order more(y/n)?";
-            rechoice : cin>>re;
+             cin>>re;
             if(re == 'n')
                 break;
             if(re == 'y')
                 continue;
             if(re != 'y' || re != 'n')
-                cout<<"Enter a valid choice.";
+                cout<<"Enter a valid choice:";
                 goto ordermoreagain;
-            
+
         }
 
         else{
@@ -418,7 +430,7 @@ int main()
     calc : b.calculateBill();
     char a;
     try{
-    cout<<"Do you want reciept (y/n)?";
+    cout<<"Do you want a soft copy of your bill(y/n)?";
     cin>>a;
     if(a == 'y' || a == 'n')
     {
